@@ -680,7 +680,7 @@ function fetchOpenWeatherMapData(
     var urlForecast =
         'http://api.openweathermap.org/data/2.5/onecall?appid=' +
         weatherKey +
-        '&format=json&cnt=3';
+        '&format=json';
 
     if (!overrideLocation) {
         url += '&lat=' + pos.coords.latitude + '&lon=' + pos.coords.longitude;
@@ -688,11 +688,10 @@ function fetchOpenWeatherMapData(
             '&lat=' + pos.coords.latitude + '&lon=' + pos.coords.longitude;
     } else {
         url += '&q=' + encodeURIComponent(overrideLocation);
-        urlForecast += '&q=' + encodeURIComponent(overrideLocation);
     }
 
     console.log(url);
-    console.log(urlForecast);
+    //console.log(urlForecast);
 
     xhrRequest(url, 'GET', function(responseText) {
         try {
@@ -712,10 +711,22 @@ function fetchOpenWeatherMapData(
                 sunset = formatTimestamp(parseInt(resp.sys.sunset, 10));
                 console.log('sunrise: ' + sunrise);
                 console.log('sunset: ' + sunset);
+
             } catch (ex) {
                 console.log('error retrieving sunrise/sunset');
                 sunrise = 0;
                 sunset = 0;
+            }
+
+            try {
+              var lat = resp.coord.lat;
+              var lon = resp.coord.lon;
+              urlForecast += '&lat=' + lat + '&lon=' + lon;
+              console.log('latitude: ' + lat);
+              console.log('longitude: ' + lon);
+              console.log(urlForecast);
+            } catch (ex) {
+              console.log('error retrieving coordinates' + ex);
             }
 
             if (typeof condition === 'undefined') {
