@@ -678,7 +678,7 @@ function fetchOpenWeatherMapData(
     var url =
         'http://api.openweathermap.org/data/2.5/weather?appid=' + weatherKey;
     var urlForecast =
-        'http://api.openweathermap.org/data/2.5/forecast/daily?appid=' +
+        'http://api.openweathermap.org/data/2.5/onecall?appid=' +
         weatherKey +
         '&format=json&cnt=3';
 
@@ -727,18 +727,18 @@ function fetchOpenWeatherMapData(
                     console.log('Retrieving forecast data from OpenWeatherMap');
                     var fResp = JSON.parse(forecastRespText);
 
-                    var max = (useCelsius ? kelvinToCelsius(fResp.list[0].temp.max) : kelvinToFahrenheit(fResp.list[0].temp.max));
-                    var min = (useCelsius ? kelvinToCelsius(fResp.list[0].temp.min) : kelvinToFahrenheit(fResp.list[0].temp.min));
+                    var max = (useCelsius ? kelvinToCelsius(fResp.daily[0].temp.max) : kelvinToFahrenheit(fResp.daily[0].temp.max));
+                    var min = (useCelsius ? kelvinToCelsius(fResp.daily[0].temp.min) : kelvinToFahrenheit(fResp.daily[0].temp.min));
 
-                    for (var fIndex in fResp.list) {
-                        var fDay = new Date(fResp.list[fIndex].dt * 1000);
+                    for (var fIndex in fResp.daily) {
+                        var fDay = new Date(fResp.daily[fIndex].dt * 1000);
                         if (day.getUTCDate() === fDay.getUTCDate()) {
-                            console.log(JSON.stringify(fResp.list[fIndex]));
-                            max = (useCelsius ? kelvinToCelsius(fResp.list[fIndex].temp.max) : kelvinToFahrenheit(
-                                      fResp.list[fIndex].temp.max
+                            console.log(JSON.stringify(fResp.daily[fIndex]));
+                            max = (useCelsius ? kelvinToCelsius(fResp.daily[fIndex].temp.max) : kelvinToFahrenheit(
+                                      fResp.daily[fIndex].temp.max
                                   ));
-                            min = (useCelsius ? kelvinToCelsius(fResp.list[fIndex].temp.min) : kelvinToFahrenheit(
-                                      fResp.list[fIndex].temp.min
+                            min = (useCelsius ? kelvinToCelsius(fResp.daily[fIndex].temp.min) : kelvinToFahrenheit(
+                                      fResp.daily[fIndex].temp.min
                                   ));
                         }
                     }
