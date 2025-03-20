@@ -678,7 +678,7 @@ function fetchOpenWeatherMapData(
     var url =
         'http://api.openweathermap.org/data/2.5/weather?appid=' + weatherKey;
     var urlForecast =
-        'hhttp://api.openweathermap.org/data/3.0/onecall?appid=' +
+        'hhttp://api.openweathermap.org/data/3.0/onecall?exclude=hourly,minutely&appid=' +
         weatherKey +
         '&format=json';
 
@@ -693,22 +693,22 @@ function fetchOpenWeatherMapData(
     //console.log(url);
     console.log(urlForecast);
 
-    xhrRequest(url, 'GET', function(responseText) {
+    xhrRequest(urlForecast, 'GET', function(responseText) {
         try {
             console.log('Retrieving current weather from OpenWeatherMap');
             var sunrise, sunset;
             var resp = JSON.parse(responseText);
-            var temp = (useCelsius ? kelvinToCelsius(resp.main.temp) : kelvinToFahrenheit(resp.main.temp));
-            var condition = ow_iconToId[resp.weather[0].icon];
+            var temp = (useCelsius ? kelvinToCelsius(resp.current.temp) : kelvinToFahrenheit(resp.current.temp));
+            var condition = ow_iconToId[resp.current.weather[0].icon];
             var feels = temp;
-            var speed = Math.round(resp.wind.speed * 2.23694);
-            var direction = parseInt(resp.wind.deg, 10) || 0;
+            var speed = Math.round(resp.current.wind_speed * 2.23694);
+            var direction = parseInt(resp.current.wind_deg, 10) || 0;
             console.log(responseText);
             var day = new Date(resp.dt * 1000);
 
             try {
-                sunrise = formatTimestamp(parseInt(resp.sys.sunrise, 10));
-                sunset = formatTimestamp(parseInt(resp.sys.sunset, 10));
+                sunrise = formatTimestamp(parseInt(resp.current.sunrise, 10));
+                sunset = formatTimestamp(parseInt(resp.current.sunset, 10));
                 console.log('sunrise: ' + sunrise);
                 console.log('sunset: ' + sunset);
 
