@@ -2,7 +2,7 @@
 /*jshint node: true*/
 'use strict';
 
-var currentVersion = '5.9';
+var currentVersion = '5.9.1';
 
 var OPEN_WEATHER = 0;
 var WUNDERGROUND = 1;
@@ -678,7 +678,7 @@ function fetchOpenWeatherMapData(
     var url =
         'http://api.openweathermap.org/data/2.5/weather?appid=' + weatherKey;
     var urlForecast =
-        'hhttp://api.openweathermap.org/data/3.0/onecall?exclude=hourly,minutely&appid=' +
+        'http://api.openweathermap.org/data/3.0/onecall?exclude=hourly,minutely&appid=' +
         weatherKey +
         '&format=json';
 
