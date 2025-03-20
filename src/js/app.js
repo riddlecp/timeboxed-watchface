@@ -678,7 +678,7 @@ function fetchOpenWeatherMapData(
     var url =
         'http://api.openweathermap.org/data/2.5/weather?appid=' + weatherKey;
     var urlForecast =
-        'http://api.openweathermap.org/data/2.5/onecall?appid=' +
+        'hhttp://api.openweathermap.org/data/3.0/onecall?appid=' +
         weatherKey +
         '&format=json';
 
@@ -690,8 +690,8 @@ function fetchOpenWeatherMapData(
         url += '&q=' + encodeURIComponent(overrideLocation);
     }
 
-    console.log(url);
-    //console.log(urlForecast);
+    //console.log(url);
+    console.log(urlForecast);
 
     xhrRequest(url, 'GET', function(responseText) {
         try {
