@@ -21,7 +21,7 @@ static char* weather_conditions[] = {
     "\U0000F019", // 'rain': 8,
     "\U0000F01B", // 'snow': 9,
     "\U0000F01D", // 'tstorms': 10,
-    "\U0000F0b5", // 'sleat': 11,
+    "\U0000F0b5", // 'sleet': 11,
     "\U0000F00A", // 'flurries': 12,
     "\U0000F0b6", // 'hazy': 13,
     "\U0000F01D", // 'chancetstorms': 14,

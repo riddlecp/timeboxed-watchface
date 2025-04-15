@@ -676,7 +676,7 @@ function fetchOpenWeatherMapData(
     overrideLocation
 ) {
     var url =
-        'http://api.openweathermap.org/data/2.5/weather?appid=' + weatherKey;
+        'http://api.openweathermap.org/data/3.0/onecall?appid=' + weatherKey;
     var urlForecast =
         'http://api.openweathermap.org/data/3.0/onecall?exclude=hourly,minutely&appid=' +
         weatherKey +
@@ -691,7 +691,7 @@ function fetchOpenWeatherMapData(
     }
 
     //console.log(url);
-    console.log(urlForecast);
+    //console.log(urlForecast);
 
     xhrRequest(urlForecast, 'GET', function(responseText) {
         try {
@@ -1168,4 +1168,35 @@ var y_iconToId = {
     '24': 44,
     '0': 45,
     '2': 46,
+};
+
+var om_iconToId = {
+    '0': 1,
+    '1': 5,
+    '2': 3,
+    '3': 7,
+    '45': 38,
+    '48': 38,
+    '51': 40,
+    '53': 40,
+    '55': 40,
+    '56': 11,
+    '57': 11,
+    '61': 8,
+    '63': 8,
+    '65': 8,
+    '66': 11,
+    '67': 11,
+    '71': 15,
+    '73': 9,
+    '75': 9,
+    '77': 18,
+    '80': 40,
+    '81': 8,
+    '82': 8,
+    '85': 18,
+    '86': 12,
+    '95': 10,
+    '96': 41,
+    '99': 41,
 };
