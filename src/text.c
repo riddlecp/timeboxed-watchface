@@ -635,7 +635,7 @@ void load_face_fonts() {
 
     weather_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_WEATHER_24));
     weather_font_small = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_WEATHER_16));
-    custom_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ICONS_20));
+    custom_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ICONS_18));
 }
 
 void unload_face_fonts() {
